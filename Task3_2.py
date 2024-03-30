@@ -13,5 +13,28 @@ attendees = [
     ("Alice", "Python Conference"),
     ("Bob", "Python Conference"),
     ("Charlie", "AI Summit"),
-    # More attendees...
 ]
+
+def event_attendees(event):
+    event_list = [attendee[0] for attendee in attendees if attendee[1] == event]
+    if not event_list:
+        print(f"No-one attended {event}")
+    else:
+        print(f"{event}:")
+        for person in event_list:
+            print(f"- {person} attended this event")
+
+
+def attendee_count():
+    count_dict = {}
+    for _, event in attendees:
+        if event in count_dict:
+            count_dict[event] += 1
+        else:
+            count_dict[event] = 1
+    
+    for event, count in count_dict.items():
+        print(f"{event}: {count} attendee(s)")
+
+event_attendees("Python Conference")
+attendee_count()
